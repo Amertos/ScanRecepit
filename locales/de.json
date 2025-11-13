@@ -1,0 +1,77 @@
+{
+  "header": {
+    "dashboard": "Dashboard",
+    "chat": "Chat"
+  },
+  "themeSwitcher": {
+    "light": "Zum hellen Thema wechseln",
+    "dark": "Zum dunklen Thema wechseln",
+    "nebula": "Zum Nebula-Thema wechseln"
+  },
+  "language": {
+    "en": "English",
+    "sr": "Srpski",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "dashboard": {
+    "weeklySummaryTitle": "Ihre wöchentliche Zusammenfassung",
+    "weeklySummaryLoading": "Ihre Analyse wird erstellt...",
+    "weeklySummaryEmpty": "Noch keine Analyse verfügbar. Scannen Sie weiter!",
+    "weeklySummaryNotEnoughData": "Scannen Sie diese Woche noch ein paar Belege, um Ihre wöchentliche Ausgabenanalyse freizuschalten!",
+    "scanNewReceiptTitle": "Neuen Beleg scannen",
+    "analyzing": "KI analysiert Ihren Beleg...",
+    "historyTitle": "Belegverlauf ({count})",
+    "welcomeTitle": "Willkommen bei ScanSave!",
+    "welcomeLine1": "Ihre gescannten Belege werden hier angezeigt.",
+    "welcomeLine2": "Laden Sie einen hoch, um loszulegen."
+  },
+  "upload": {
+    "button": "Beleg hochladen"
+  },
+  "error": {
+    "title": "Oh nein!",
+    "failedAnalysis": "Die Analyse des Belegs ist fehlgeschlagen. Das Bild ist möglicherweise unscharf oder das Format wird nicht unterstützt. Bitte versuchen Sie es erneut."
+  },
+  "receipt": {
+    "items": "Artikel",
+    "subtotal": "Zwischensumme",
+    "tax": "Steuer",
+    "total": "Gesamt"
+  },
+  "insight": {
+    "title": "Smarte Einsicht:"
+  },
+  "history": {
+    "searchPlaceholder": "Belege durchsuchen...",
+    "export": "Exportieren",
+    "noResults": "Keine Belege entsprechen Ihrer Suche.",
+    "exportCSVHeaders": "ID,Geschäft,Datum,Kategorie,Zwischensumme,Steuer,Gesamt,Währung,Artikelbeschreibung,Artikelpreis"
+  },
+  "modal": {
+    "title": "Belegdetails",
+    "close": "Modal schließen",
+    "itemBreakdown": "Artikelaufschlüsselung",
+    "deleteButton": "Beleg löschen",
+    "deleteConfirm": "Sind Sie sicher, dass Sie diesen Beleg löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+  },
+  "chatbot": {
+    "greetingWithData": "Hallo! Ich bin Savvy. Ich habe Ihre Belege analysiert. Fragen Sie mich alles über Ihre Ausgaben, z.B. 'Wo habe ich letzten Monat am meisten ausgegeben?' oder 'Fassen Sie meine Lebensmittelausgaben zusammen.'",
+    "greetingWithoutData": "Hallo! Ich bin Savvy, Ihr persönlicher Finanzassistent. Sobald Sie einige Belege scannen, kann ich Ihnen helfen, Ihre Ausgaben zu analysieren. Wie kann ich Ihnen heute allgemein helfen?",
+    "inputPlaceholder": "Fragen Sie Savvy alles...",
+    "send": "Nachricht senden",
+    "error": "Entschuldigung, ich habe im Moment Verbindungsprobleme. Bitte versuchen Sie es später erneut.",
+    "newChat": "Neuer Chat"
+  },
+  "category": {
+    "food_dining": "Essen & Trinken",
+    "groceries": "Lebensmittel",
+    "shopping": "Einkaufen",
+    "transportation": "Transport",
+    "health": "Gesundheit",
+    "entertainment": "Unterhaltung",
+    "utilities": "Nebenkosten",
+    "home": "Zuhause",
+    "other": "Sonstiges"
+  }
+}

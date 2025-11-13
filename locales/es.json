@@ -1,0 +1,77 @@
+{
+  "header": {
+    "dashboard": "Panel",
+    "chat": "Chat"
+  },
+  "themeSwitcher": {
+    "light": "Cambiar a tema claro",
+    "dark": "Cambiar a tema oscuro",
+    "nebula": "Cambiar a tema nebula"
+  },
+  "language": {
+    "en": "English",
+    "sr": "Srpski",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "dashboard": {
+    "weeklySummaryTitle": "Tu resumen semanal",
+    "weeklySummaryLoading": "Generando tu análisis...",
+    "weeklySummaryEmpty": "Aún no hay análisis disponible. ¡Sigue escaneando!",
+    "weeklySummaryNotEnoughData": "¡Escanea algunos recibos más esta semana para desbloquear tu análisis de gastos semanal!",
+    "scanNewReceiptTitle": "Escanear nuevo recibo",
+    "analyzing": "La IA está analizando tu recibo...",
+    "historyTitle": "Historial de recibos ({count})",
+    "welcomeTitle": "¡Bienvenido a ScanSave!",
+    "welcomeLine1": "Tus recibos escaneados aparecerán aquí.",
+    "welcomeLine2": "Sube uno para empezar."
+  },
+  "upload": {
+    "button": "Subir recibo"
+  },
+  "error": {
+    "title": "¡Oh, no!",
+    "failedAnalysis": "No se pudo analizar el recibo. La imagen puede no ser clara o el formato no es compatible. Por favor, inténtalo de nuevo."
+  },
+  "receipt": {
+    "items": "Artículos",
+    "subtotal": "Subtotal",
+    "tax": "Impuestos",
+    "total": "Total"
+  },
+  "insight": {
+    "title": "Dato inteligente:"
+  },
+  "history": {
+    "searchPlaceholder": "Buscar recibos...",
+    "export": "Exportar",
+    "noResults": "Ningún recibo coincide con tu búsqueda.",
+    "exportCSVHeaders": "ID,Tienda,Fecha,Categoría,Subtotal,Impuestos,Total,Moneda,Descripción del artículo,Precio del artículo"
+  },
+  "modal": {
+    "title": "Detalles del recibo",
+    "close": "Cerrar modal",
+    "itemBreakdown": "Desglose de artículos",
+    "deleteButton": "Eliminar recibo",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar este recibo? Esta acción no se puede deshacer."
+  },
+  "chatbot": {
+    "greetingWithData": "¡Hola! Soy Savvy. He analizado tus recibos. Pregúntame cualquier cosa sobre tus gastos, como '¿Dónde gasté más el mes pasado?' o 'Resume mis gastos de supermercado.'",
+    "greetingWithoutData": "¡Hola! Soy Savvy, tu asistente financiero personal. Una vez que escanees algunos recibos, podré ayudarte a analizar tus gastos. ¿Cómo puedo ayudarte en general hoy?",
+    "inputPlaceholder": "Pregúntale a Savvy cualquier cosa...",
+    "send": "Enviar mensaje",
+    "error": "Lo siento, estoy teniendo problemas de conexión en este momento. Por favor, inténtalo de nuevo más tarde.",
+    "newChat": "Nuevo chat"
+  },
+  "category": {
+    "food_dining": "Comida y restaurantes",
+    "groceries": "Supermercado",
+    "shopping": "Compras",
+    "transportation": "Transporte",
+    "health": "Salud",
+    "entertainment": "Entretenimiento",
+    "utilities": "Servicios",
+    "home": "Hogar",
+    "other": "Otro"
+  }
+}

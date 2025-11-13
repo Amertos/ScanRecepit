@@ -1,0 +1,77 @@
+{
+  "header": {
+    "dashboard": "Dashboard",
+    "chat": "Chat"
+  },
+  "themeSwitcher": {
+    "light": "Switch to light theme",
+    "dark": "Switch to dark theme",
+    "nebula": "Switch to nebula theme"
+  },
+  "language": {
+    "en": "English",
+    "sr": "Srpski",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "dashboard": {
+    "weeklySummaryTitle": "Your Weekly Summary",
+    "weeklySummaryLoading": "Generating your analysis...",
+    "weeklySummaryEmpty": "No analysis available yet. Keep scanning!",
+    "weeklySummaryNotEnoughData": "Scan a few more receipts this week to unlock your weekly spending analysis!",
+    "scanNewReceiptTitle": "Scan New Receipt",
+    "analyzing": "AI is analyzing your receipt...",
+    "historyTitle": "Receipt History ({count})",
+    "welcomeTitle": "Welcome to ScanSave!",
+    "welcomeLine1": "Your scanned receipts will appear here.",
+    "welcomeLine2": "Upload one above to get started."
+  },
+  "upload": {
+    "button": "Upload Receipt"
+  },
+  "error": {
+    "title": "Oh no!",
+    "failedAnalysis": "Failed to analyze the receipt. The image might be unclear or the format is not supported. Please try again."
+  },
+  "receipt": {
+    "items": "Items",
+    "subtotal": "Subtotal",
+    "tax": "Tax",
+    "total": "Total"
+  },
+  "insight": {
+    "title": "Smart Insight:"
+  },
+  "history": {
+    "searchPlaceholder": "Search receipts...",
+    "export": "Export",
+    "noResults": "No receipts match your search.",
+    "exportCSVHeaders": "ID,Store,Date,Category,Subtotal,Tax,Total,Currency,Item Description,Item Price"
+  },
+  "modal": {
+    "title": "Receipt Details",
+    "close": "Close modal",
+    "itemBreakdown": "Item Breakdown",
+    "deleteButton": "Delete Receipt",
+    "deleteConfirm": "Are you sure you want to delete this receipt? This action cannot be undone."
+  },
+  "chatbot": {
+    "greetingWithData": "Hi! I'm Savvy. I've analyzed your receipts. Ask me anything about your spending, like 'Where did I spend the most last month?' or 'Summarize my grocery expenses.'",
+    "greetingWithoutData": "Hi! I'm Savvy, your personal finance assistant. Once you scan some receipts, I can help you analyze your spending. How can I help you in general today?",
+    "inputPlaceholder": "Ask Savvy anything...",
+    "send": "Send message",
+    "error": "Sorry, I'm having trouble connecting right now. Please try again later.",
+    "newChat": "New Chat"
+  },
+  "category": {
+    "food_dining": "Food & Dining",
+    "groceries": "Groceries",
+    "shopping": "Shopping",
+    "transportation": "Transportation",
+    "health": "Health",
+    "entertainment": "Entertainment",
+    "utilities": "Utilities",
+    "home": "Home",
+    "other": "Other"
+  }
+}

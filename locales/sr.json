@@ -1,0 +1,77 @@
+{
+  "header": {
+    "dashboard": "Kontrolna tabla",
+    "chat": "Ćaskanje"
+  },
+  "themeSwitcher": {
+    "light": "Prebaci na svetlu temu",
+    "dark": "Prebaci na tamnu temu",
+    "nebula": "Prebaci na nebula temu"
+  },
+  "language": {
+    "en": "English",
+    "sr": "Srpski",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "dashboard": {
+    "weeklySummaryTitle": "Vaš nedeljni pregled",
+    "weeklySummaryLoading": "Generišem analizu...",
+    "weeklySummaryEmpty": "Još uvek nema analize. Nastavite sa skeniranjem!",
+    "weeklySummaryNotEnoughData": "Skenirajte još nekoliko računa ove nedelje da biste otključali analizu potrošnje!",
+    "scanNewReceiptTitle": "Skeniraj novi račun",
+    "analyzing": "AI analizira vaš račun...",
+    "historyTitle": "Istorija računa ({count})",
+    "welcomeTitle": "Dobrodošli u ScanSave!",
+    "welcomeLine1": "Vaši skenirani računi će se pojaviti ovde.",
+    "welcomeLine2": "Otpremite jedan da biste započeli."
+  },
+  "upload": {
+    "button": "Otpremi račun"
+  },
+  "error": {
+    "title": "Oh ne!",
+    "failedAnalysis": "Analiza računa nije uspela. Slika je možda nejasna ili format nije podržan. Molimo pokušajte ponovo."
+  },
+  "receipt": {
+    "items": "Stavke",
+    "subtotal": "Međuzbir",
+    "tax": "Porez",
+    "total": "Ukupno"
+  },
+  "insight": {
+    "title": "Pametan uvid:"
+  },
+  "history": {
+    "searchPlaceholder": "Pretraži račune...",
+    "export": "Izvezi",
+    "noResults": "Nema računa koji odgovaraju pretrazi.",
+    "exportCSVHeaders": "ID,Prodavnica,Datum,Kategorija,Međuzbir,Porez,Ukupno,Valuta,Opis stavke,Cena stavke"
+  },
+  "modal": {
+    "title": "Detalji računa",
+    "close": "Zatvori modal",
+    "itemBreakdown": "Analiza stavki",
+    "deleteButton": "Obriši račun",
+    "deleteConfirm": "Da li ste sigurni da želite da obrišete ovaj račun? Ova radnja se ne može opozvati."
+  },
+  "chatbot": {
+    "greetingWithData": "Zdravo! Ja sam Savvy. Analizirao sam vaše račune. Pitajte me bilo šta o vašoj potrošnji, na primer 'Gde sam potrošio najviše prošlog meseca?' ili 'Sumiraj moje troškove za namirnice.'",
+    "greetingWithoutData": "Zdravo! Ja sam Savvy, vaš lični finansijski asistent. Kada skenirate neke račune, mogu vam pomoći da analizirate potrošnju. Kako vam danas mogu pomoći?",
+    "inputPlaceholder": "Pitajte Savvy bilo šta...",
+    "send": "Pošalji poruku",
+    "error": "Žao mi je, trenutno imam problema sa vezom. Molimo pokušajte ponovo kasnije.",
+    "newChat": "Novo ćaskanje"
+  },
+  "category": {
+    "food_dining": "Hrana i restorani",
+    "groceries": "Namirnice",
+    "shopping": "Kupovina",
+    "transportation": "Transport",
+    "health": "Zdravlje",
+    "entertainment": "Zabava",
+    "utilities": "Računi",
+    "home": "Kuća",
+    "other": "Ostalo"
+  }
+}

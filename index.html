@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScanSave AI Receipt Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://unpkg.com/recharts/umd/Recharts.min.js"></script>
+    <style>
+      :root {
+        --font-sans: 'Inter', sans-serif;
+      }
+      .theme-light {
+        --bg-color: #f8f9fa;
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --text-on-accent: #ffffff;
+        --text-heading: #000000;
+        --text-inverted: #f8f9fa;
+        --accent-primary: #007bff;
+        --accent-primary-hover: #0056b3;
+        --accent-primary-disabled: #b3d7ff;
+        --card-bg: rgba(255, 255, 255, 0.8);
+        --card-border: rgba(0, 0, 0, 0.1);
+        --header-bg: rgba(255, 255, 255, 0.7);
+        --header-border: rgba(0, 0, 0, 0.1);
+        --tab-bg: rgba(0, 0, 0, 0.05);
+        --tab-active-bg: var(--accent-primary);
+        --tab-active-text: #ffffff;
+        --tab-inactive-text: var(--text-primary);
+        --input-bg: #ffffff;
+        --modal-bg: rgba(255, 255, 255, 0.95);
+        --skeleton-bg: rgba(0, 0, 0, 0.08);
+      }
+      .theme-dark {
+        --bg-color: #121212;
+        --text-primary: #e0e0e0;
+        --text-secondary: #a0a0a0;
+        --text-on-accent: #ffffff;
+        --text-heading: #ffffff;
+        --text-inverted: #121212;
+        --accent-primary: #4dabf7;
+        --accent-primary-hover: #2196f3;
+        --accent-primary-disabled: #1e3a8a;
+        --card-bg: rgba(29, 29, 29, 0.8);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --header-bg: rgba(20, 20, 20, 0.7);
+        --header-border: rgba(255, 255, 255, 0.1);
+        --tab-bg: rgba(255, 255, 255, 0.05);
+        --tab-active-bg: var(--accent-primary);
+        --tab-active-text: #000000;
+        --tab-inactive-text: var(--text-primary);
+        --input-bg: #2b2b2b;
+        --modal-bg: rgba(30, 30, 30, 0.95);
+        --skeleton-bg: rgba(255, 255, 255, 0.1);
+      }
+      .theme-nebula {
+        --bg-gradient-start: #3a1c71;
+        --bg-gradient-mid1: #d76d77;
+        --bg-gradient-mid2: #ffaf7b;
+        --text-primary: #e0e0e0;
+        --text-secondary: #c0c0c0;
+        --text-on-accent: #ffffff;
+        --text-heading: #ffffff;
+        --text-inverted: #121212;
+        --accent-primary: #f9c55d;
+        --accent-primary-hover: #f7b023;
+        --accent-primary-disabled: #a1887f;
+        --card-bg: rgba(29, 29, 29, 0.5);
+        --card-border: rgba(255, 255, 255, 0.2);
+        --header-bg: rgba(20, 20, 20, 0.5);
+        --header-border: rgba(255, 255, 255, 0.2);
+        --tab-bg: rgba(255, 255, 255, 0.05);
+        --tab-active-bg: var(--accent-primary);
+        --tab-active-text: #000000;
+        --tab-inactive-text: var(--text-primary);
+        --input-bg: #2b2b2b;
+        --modal-bg: rgba(30, 30, 30, 0.9);
+        --skeleton-bg: rgba(255, 255, 255, 0.1);
+      }
+      body {
+        font-family: var(--font-sans);
+        background-color: var(--bg-color);
+        transition: background-color 0.3s ease;
+      }
+      .theme-nebula body {
+        background: linear-gradient(-45deg, var(--bg-gradient-start), var(--bg-gradient-mid1), var(--bg-gradient-mid2));
+        background-size: 400% 400%;
+        animation: gradient 30s ease infinite;
+      }
+
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .card-enter {
+        animation: card-enter-animation 0.5s ease-out forwards;
+      }
+      .modal-enter {
+        animation: modal-enter-animation 0.4s ease-out forwards;
+      }
+
+      @keyframes card-enter-animation {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+       @keyframes modal-enter-animation {
+        from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      
+      @keyframes language-dropdown-enter {
+        from { opacity: 0; transform: translateY(-10px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.3); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.5); }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
