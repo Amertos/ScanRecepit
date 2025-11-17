@@ -134,3 +134,19 @@ export const generateChatTitle = async (conversation: string, language: string):
 
     return result.text.trim().replace(/"/g, ''); // Clean up potential quotes
 }
+
+// FIX: Add generateImage function to be used by ImageGenerator component.
+export const generateImage = async (prompt: string): Promise<string> => {
+    const response = await ai.models.generateImages({
+        model: 'imagen-4.0-generate-001',
+        prompt: prompt,
+        config: {
+          numberOfImages: 1,
+          outputMimeType: 'image/jpeg',
+          aspectRatio: '1:1',
+        },
+    });
+
+    const base64ImageBytes: string = response.generatedImages[0].image.imageBytes;
+    return base64ImageBytes;
+};

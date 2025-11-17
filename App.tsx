@@ -4,13 +4,14 @@ import { FileUpload } from './components/FileUpload';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { ErrorMessage } from './components/ErrorMessage';
 import { analyzeReceiptImage, generateInsight, generateWeeklyAnalysis } from './services/geminiService';
-import type { ReceiptData } from './types';
+import type { ReceiptData, SpendingCategory } from './types';
 import { Chatbot } from './components/Chatbot';
 import { WeeklyAnalytics } from './components/WeeklyAnalytics';
 import { ReceiptHistory } from './components/ReceiptHistory';
 import { ReceiptModal } from './components/ReceiptModal';
 import { useTheme } from './hooks/useTheme';
 import { useTranslation } from './hooks/useTranslation';
+import { CameraCapture } from './components/CameraCapture';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useTheme();
@@ -21,8 +22,11 @@ const App: React.FC = () => {
   const [weeklyAnalysis, setWeeklyAnalysis] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [isGeneratingAnalysis, setIsGeneratingAnalysis] = useState<boolean>(false);
+  const [isCameraOpen, setIsCameraOpen] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<SpendingCategory | 'all'>('all');
+
 
   useEffect(() => {
     try {
@@ -66,7 +70,8 @@ const App: React.FC = () => {
 
   const handleFileSelect = async (file: File | null) => {
     if (!file) return;
-
+    
+    setIsCameraOpen(false);
     setIsAnalyzing(true);
     setError(null);
     setActiveTab('scanner');
@@ -103,11 +108,17 @@ const App: React.FC = () => {
   const filteredReceipts = receipts.filter(receipt => {
     const query = searchQuery.toLowerCase();
     const translatedCategory = t(`category.${receipt.category}`).toLowerCase();
-    return (
+
+    const matchesCategory = selectedCategory === 'all' || receipt.category === selectedCategory;
+
+    const matchesSearch = (
+      !searchQuery ||
       receipt.storeName.toLowerCase().includes(query) ||
       translatedCategory.includes(query) ||
       receipt.items.some(item => item.description.toLowerCase().includes(query))
     );
+    
+    return matchesCategory && matchesSearch;
   });
   
   const DashboardView: React.FC = () => (
@@ -119,12 +130,18 @@ const App: React.FC = () => {
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 isHistoryEmpty={receipts.length === 0}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
             />
         </div>
         <div className="space-y-6">
             <div className="bg-[var(--card-bg)] backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-[var(--card-border)] card-enter">
               <h2 className="text-2xl font-bold text-[var(--text-heading)] mb-4">{t('dashboard.scanNewReceiptTitle')}</h2>
-              <FileUpload onFileSelect={handleFileSelect} disabled={isAnalyzing} />
+              <FileUpload 
+                onFileSelect={handleFileSelect} 
+                disabled={isAnalyzing} 
+                onTakePhotoClick={() => setIsCameraOpen(true)}
+              />
               {error && <ErrorMessage message={error} />}
             </div>
             <WeeklyAnalytics analysis={weeklyAnalysis} isLoading={isGeneratingAnalysis} />
@@ -137,8 +154,9 @@ const App: React.FC = () => {
       <Header activeTab={activeTab} setActiveTab={setActiveTab} theme={theme} setTheme={setTheme} />
       {isAnalyzing && <LoadingSpinner />}
       <main className="container mx-auto px-4 md:px-8 py-8">
-        <div className={`transition-all duration-300 ${activeTab === 'chat' ? 'max-w-6xl' : 'max-w-4xl'} mx-auto`}>
-          {activeTab === 'scanner' ? <DashboardView /> : <Chatbot allReceipts={receipts} />}
+        <div className={`transition-all duration-300 ${activeTab !== 'scanner' ? 'max-w-6xl' : 'max-w-4xl'} mx-auto`}>
+          {activeTab === 'scanner' && <DashboardView />}
+          {activeTab === 'chat' && <Chatbot allReceipts={receipts} />}
         </div>
       </main>
       {selectedReceipt && (
@@ -149,6 +167,12 @@ const App: React.FC = () => {
             handleDeleteReceipt(id);
             setSelectedReceipt(null);
           }}
+        />
+      )}
+      {isCameraOpen && (
+        <CameraCapture 
+          onCapture={handleFileSelect}
+          onClose={() => setIsCameraOpen(false)}
         />
       )}
     </div>

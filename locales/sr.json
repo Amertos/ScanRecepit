@@ -27,7 +27,8 @@
     "welcomeLine2": "Otpremite jedan da biste započeli."
   },
   "upload": {
-    "button": "Otpremi račun"
+    "button": "Otpremi račun",
+    "takePhoto": "Slikaj"
   },
   "error": {
     "title": "Oh ne!",
@@ -46,7 +47,8 @@
     "searchPlaceholder": "Pretraži račune...",
     "export": "Izvezi",
     "noResults": "Nema računa koji odgovaraju pretrazi.",
-    "exportCSVHeaders": "ID,Prodavnica,Datum,Kategorija,Međuzbir,Porez,Ukupno,Valuta,Opis stavke,Cena stavke"
+    "exportCSVHeaders": "ID,Prodavnica,Datum,Kategorija,Međuzbir,Porez,Ukupno,Valuta,Opis stavke,Cena stavke",
+    "allCategories": "Sve"
   },
   "modal": {
     "title": "Detalji računa",
@@ -61,7 +63,14 @@
     "inputPlaceholder": "Pitajte Savvy bilo šta...",
     "send": "Pošalji poruku",
     "error": "Žao mi je, trenutno imam problema sa vezom. Molimo pokušajte ponovo kasnije.",
-    "newChat": "Novo ćaskanje"
+    "newChat": "Novo ćaskanje",
+    "mapsFooter": "Podatke o mapama obezbeđuje Google.",
+    "sources": "Izvori"
+  },
+  "camera": {
+    "capture": "Slikaj",
+    "close": "Zatvori",
+    "error": "Nije moguće pristupiti kameri. Molimo vas da proverite da li ste odobrili dozvolu u podešavanjima pregledača."
   },
   "category": {
     "food_dining": "Hrana i restorani",

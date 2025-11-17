@@ -27,7 +27,8 @@
     "welcomeLine2": "Upload one above to get started."
   },
   "upload": {
-    "button": "Upload Receipt"
+    "button": "Upload Receipt",
+    "takePhoto": "Take Photo"
   },
   "error": {
     "title": "Oh no!",
@@ -46,7 +47,8 @@
     "searchPlaceholder": "Search receipts...",
     "export": "Export",
     "noResults": "No receipts match your search.",
-    "exportCSVHeaders": "ID,Store,Date,Category,Subtotal,Tax,Total,Currency,Item Description,Item Price"
+    "exportCSVHeaders": "ID,Store,Date,Category,Subtotal,Tax,Total,Currency,Item Description,Item Price",
+    "allCategories": "All"
   },
   "modal": {
     "title": "Receipt Details",
@@ -61,7 +63,14 @@
     "inputPlaceholder": "Ask Savvy anything...",
     "send": "Send message",
     "error": "Sorry, I'm having trouble connecting right now. Please try again later.",
-    "newChat": "New Chat"
+    "newChat": "New Chat",
+    "mapsFooter": "Maps data provided by Google.",
+    "sources": "Sources"
+  },
+  "camera": {
+    "capture": "Capture",
+    "close": "Close",
+    "error": "Could not access camera. Please ensure you have granted permission in your browser settings."
   },
   "category": {
     "food_dining": "Food & Dining",

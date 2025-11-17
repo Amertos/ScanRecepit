@@ -27,7 +27,8 @@
     "welcomeLine2": "Laden Sie einen hoch, um loszulegen."
   },
   "upload": {
-    "button": "Beleg hochladen"
+    "button": "Beleg hochladen",
+    "takePhoto": "Foto aufnehmen"
   },
   "error": {
     "title": "Oh nein!",
@@ -46,7 +47,8 @@
     "searchPlaceholder": "Belege durchsuchen...",
     "export": "Exportieren",
     "noResults": "Keine Belege entsprechen Ihrer Suche.",
-    "exportCSVHeaders": "ID,Geschäft,Datum,Kategorie,Zwischensumme,Steuer,Gesamt,Währung,Artikelbeschreibung,Artikelpreis"
+    "exportCSVHeaders": "ID,Geschäft,Datum,Kategorie,Zwischensumme,Steuer,Gesamt,Währung,Artikelbeschreibung,Artikelpreis",
+    "allCategories": "Alle"
   },
   "modal": {
     "title": "Belegdetails",
@@ -61,7 +63,14 @@
     "inputPlaceholder": "Fragen Sie Savvy alles...",
     "send": "Nachricht senden",
     "error": "Entschuldigung, ich habe im Moment Verbindungsprobleme. Bitte versuchen Sie es später erneut.",
-    "newChat": "Neuer Chat"
+    "newChat": "Neuer Chat",
+    "mapsFooter": "Kartendaten von Google zur Verfügung gestellt.",
+    "sources": "Quellen"
+  },
+  "camera": {
+    "capture": "Aufnehmen",
+    "close": "Schließen",
+    "error": "Kamerazugriff nicht möglich. Bitte stellen Sie sicher, dass Sie die Berechtigung in Ihren Browsereinstellungen erteilt haben."
   },
   "category": {
     "food_dining": "Essen & Trinken",

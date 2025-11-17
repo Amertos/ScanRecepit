@@ -1,5 +1,6 @@
 import React from 'react';
-import type { ReceiptData } from '../types';
+import type { ReceiptData, SpendingCategory } from '../types';
+import { SPENDING_CATEGORIES } from '../types';
 import { LogoIcon, SearchIcon, DownloadIcon } from './Icons';
 import { getCategoryIcon } from './getCategoryIcon';
 import { formatCurrency } from '../utils/currency';
@@ -11,36 +12,18 @@ interface ReceiptHistoryProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   isHistoryEmpty: boolean;
+  selectedCategory: SpendingCategory | 'all';
+  setSelectedCategory: (category: SpendingCategory | 'all') => void;
 }
 
 const ReceiptCard: React.FC<{ receipt: ReceiptData; onSelect: () => void }> = ({ receipt, onSelect }) => {
-  const cardRef = React.useRef<HTMLButtonElement>(null);
   const { t } = useTranslation();
   const CategoryIcon = getCategoryIcon(receipt.category);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const { left, top, width, height } = card.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / 15;
-    const y = (e.clientY - top - height / 2) / 15;
-    card.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${-y}deg) scale(1.05)`;
-  };
-
-  const handleMouseLeave = () => {
-    const card = cardRef.current;
-    if (!card) return;
-    card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
-  };
-
   return (
     <button
-      ref={cardRef}
       onClick={onSelect}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="w-full bg-[var(--card-bg)] backdrop-blur-md p-4 rounded-xl shadow-lg border border-[var(--card-border)] text-left transition-all duration-300 ease-out"
-      style={{ transformStyle: 'preserve-3d' }}
+      className="w-full bg-[var(--card-bg)] backdrop-blur-md p-4 rounded-xl shadow-lg border border-[var(--card-border)] text-left transition-all duration-300 ease-out hover:shadow-xl hover:scale-[1.02]"
     >
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
@@ -61,8 +44,9 @@ const ReceiptCard: React.FC<{ receipt: ReceiptData; onSelect: () => void }> = ({
   );
 };
 
-export const ReceiptHistory: React.FC<ReceiptHistoryProps> = ({ receipts, onReceiptSelect, searchQuery, setSearchQuery, isHistoryEmpty }) => {
+export const ReceiptHistory: React.FC<ReceiptHistoryProps> = ({ receipts, onReceiptSelect, searchQuery, setSearchQuery, isHistoryEmpty, selectedCategory, setSelectedCategory }) => {
   const { t } = useTranslation();
+  const categories: (SpendingCategory | 'all')[] = ['all', ...SPENDING_CATEGORIES];
 
   const exportToCSV = (data: ReceiptData[]) => {
     if (data.length === 0) return;
@@ -109,31 +93,56 @@ export const ReceiptHistory: React.FC<ReceiptHistoryProps> = ({ receipts, onRece
 
   return (
     <div className="space-y-4 card-enter" style={{ animationDelay: '200ms' }}>
-       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <h2 className="text-2xl font-bold text-[var(--text-heading)]">{t('dashboard.historyTitle', { count: receipts.length })}</h2>
-        <div className="flex items-center gap-2">
-           <div className="relative flex-grow">
-              <input 
-                type="text"
-                placeholder={t('history.searchPlaceholder')}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-[var(--input-bg)] border border-[var(--card-border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] transition placeholder:text-[var(--text-secondary)] text-[var(--text-primary)]"
-              />
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[var(--text-secondary)]">
-                <SearchIcon className="w-5 h-5"/>
-              </div>
-           </div>
-           <button 
-             onClick={() => exportToCSV(receipts)}
-             disabled={receipts.length === 0}
-             className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold rounded-lg shadow-md hover:bg-[var(--accent-primary-hover)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--accent-primary)] transition-all duration-200 ease-in-out disabled:bg-[var(--accent-primary-disabled)] disabled:cursor-not-allowed"
-             aria-label={t('history.export')}
-           >
-              <DownloadIcon className="w-5 h-5"/>
-              <span className="hidden sm:inline">{t('history.export')}</span>
-           </button>
+      <h2 className="text-2xl font-bold text-[var(--text-heading)]">{t('dashboard.historyTitle', { count: receipts.length })}</h2>
+
+      <div className="relative">
+        <div className="flex space-x-2 overflow-x-auto pb-2 -mx-1 px-1" style={{ scrollbarWidth: 'none', '-ms-overflow-style': 'none' }}>
+          <style>{`
+            .no-scrollbar::-webkit-scrollbar { display: none; }
+          `}</style>
+          {categories.map((cat) => {
+            const isActive = selectedCategory === cat;
+            const Icon = cat !== 'all' ? getCategoryIcon(cat) : null;
+            return (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`flex-shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ease-in-out ${
+                  isActive
+                    ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] shadow'
+                    : 'bg-[var(--tab-bg)] text-[var(--tab-inactive-text)] hover:bg-[var(--accent-primary)]/20'
+                }`}
+              >
+                {Icon && <Icon className="w-4 h-4" />}
+                <span>{cat === 'all' ? t('history.allCategories') : t(`category.${cat}`)}</span>
+              </button>
+            );
+          })}
         </div>
+      </div>
+
+      <div className="flex items-center gap-2">
+         <div className="relative flex-grow">
+            <input 
+              type="text"
+              placeholder={t('history.searchPlaceholder')}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-[var(--input-bg)] border border-[var(--card-border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)] transition placeholder:text-[var(--text-secondary)] text-[var(--text-primary)]"
+            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[var(--text-secondary)]">
+              <SearchIcon className="w-5 h-5"/>
+            </div>
+         </div>
+         <button 
+           onClick={() => exportToCSV(receipts)}
+           disabled={receipts.length === 0}
+           className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold rounded-lg shadow-md hover:bg-[var(--accent-primary-hover)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--accent-primary)] transition-all duration-200 ease-in-out disabled:bg-[var(--accent-primary-disabled)] disabled:cursor-not-allowed"
+           aria-label={t('history.export')}
+         >
+            <DownloadIcon className="w-5 h-5"/>
+            <span className="hidden sm:inline">{t('history.export')}</span>
+         </button>
       </div>
       
       {receipts.length > 0 ? (

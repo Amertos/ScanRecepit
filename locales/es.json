@@ -27,7 +27,8 @@
     "welcomeLine2": "Sube uno para empezar."
   },
   "upload": {
-    "button": "Subir recibo"
+    "button": "Subir recibo",
+    "takePhoto": "Tomar foto"
   },
   "error": {
     "title": "¡Oh, no!",
@@ -46,7 +47,8 @@
     "searchPlaceholder": "Buscar recibos...",
     "export": "Exportar",
     "noResults": "Ningún recibo coincide con tu búsqueda.",
-    "exportCSVHeaders": "ID,Tienda,Fecha,Categoría,Subtotal,Impuestos,Total,Moneda,Descripción del artículo,Precio del artículo"
+    "exportCSVHeaders": "ID,Tienda,Fecha,Categoría,Subtotal,Impuestos,Total,Moneda,Descripción del artículo,Precio del artículo",
+    "allCategories": "Todas"
   },
   "modal": {
     "title": "Detalles del recibo",
@@ -61,7 +63,14 @@
     "inputPlaceholder": "Pregúntale a Savvy cualquier cosa...",
     "send": "Enviar mensaje",
     "error": "Lo siento, estoy teniendo problemas de conexión en este momento. Por favor, inténtalo de nuevo más tarde.",
-    "newChat": "Nuevo chat"
+    "newChat": "Nuevo chat",
+    "mapsFooter": "Datos de mapas proporcionados por Google.",
+    "sources": "Fuentes"
+  },
+  "camera": {
+    "capture": "Capturar",
+    "close": "Cerrar",
+    "error": "No se pudo acceder a la cámara. Por favor, asegúrese de haber concedido permiso en la configuración de su navegador."
   },
   "category": {
     "food_dining": "Comida y restaurantes",

@@ -1,5 +1,9 @@
 {
   "name": "ScanSave AI Receipt Analyzer",
   "description": "An AI-powered application that allows users to upload a receipt image, automatically extracts key information including the currency, and provides smart spending insights. The app features a multi-language UI and AI assistant.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation",
+    "camera"
+  ]
 }
